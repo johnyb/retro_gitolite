@@ -1,0 +1,5 @@
+<%= f.label_tag _('SSH Public Keys') + ':' if @user.valid? -%>
+
+<%= render :partial => 'admin/users/ssh_pubkey' , :collection => @user.ssh_pubkeys %>
+<%= link_to _('Add new public key'), new_admin_user_ssh_pubkey_path(@user) if @user.valid? %>
+
