@@ -1,5 +1,5 @@
-<%= f.label_tag _('SSH Public Keys') + ':' unless @user.scm_name.empty? -%>
+<% return "" if @user.scm_name.empty? %>
+<%= render :partial => 'ssh_pubkeys/ssh_pubkeys', :locals =>
+            { :f => f } %>
 
-<%= render :partial => 'user/ssh_pubkey' , :collection => @user.ssh_pubkeys %>
-<%= link_to _('Add new public key'), new_ssh_pubkey_path unless @user.scm_name.empty? %>
-
+<%= link_to _('Add new public key'), new_ssh_pubkey_path %>
