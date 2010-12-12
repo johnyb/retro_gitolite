@@ -1,0 +1,6 @@
+<% @page_title = _('Edit SSH Public Key') -%>
+
+<%= render :partial => '/admin/shared/edit_form', :locals => {
+      :record => @ssh_pubkey,
+      :member_path => ssh_pubkey_path,
+      :collection_path => ssh_pubkey_path } %>

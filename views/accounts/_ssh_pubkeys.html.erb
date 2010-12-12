@@ -1,5 +1,6 @@
 <% return "" if @user.scm_name.empty? %>
-<%= render :partial => 'ssh_pubkeys/ssh_pubkeys', :locals =>
-            { :f => f } %>
 
-<%= link_to _('Add new public key'), new_ssh_pubkey_path %>
+<%= render :partial => 'ssh_pubkeys/ssh_pubkeys', :locals =>
+{ :f => f, :new_link => new_ssh_pubkey_path }
+%>
+

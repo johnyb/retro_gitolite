@@ -1,4 +1,5 @@
-<%= render :partial => 'ssh_pubkeys/ssh_pubkeys', :locals =>
-            { :f => f } %>
+<% return "" unless @user.valid? %>
+<%= render :partial => 'ssh_pubkeys/ssh_pubkeys',
+  :locals => { :f => f, :new_link => new_admin_user_ssh_pubkey_path(@user) }
+%>
 
-<%= link_to _('Add new public key'), new_admin_user_ssh_pubkey_path(@user) if @user.valid? %>
