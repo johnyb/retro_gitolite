@@ -1,7 +1,7 @@
 <li id="ssh_pubkey_<%= ssh_pubkey.id %>">
-  <div class="actions float-r">
+  <span class="actions float-r">
     <%= link_to _('Edit'), edit_ssh_pubkey_path(ssh_pubkey.id) %>
     <%= link_to _('Delete'), ssh_pubkey_path(ssh_pubkey), options_for_destroy_link %>
-  </div>
-  <span><%= ssh_pubkey.pubkey %></span>
+  </span>
+  <span><%= ssh_pubkey.filename %></span>
 </li>

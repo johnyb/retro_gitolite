@@ -1,8 +1,8 @@
 <%= f.label_tag _('SSH Public Keys') + ':' if @user.valid? -%>
 
 <div class="bottom-5 strong"><%= link_to _('Add new SSH Public Key'), new_link %></div>
-<div class="box">
-  <ul class="non_sortable span-16">
+<div class="box clear">
+  <ul class="non-sortable span-16">
    <%= render :partial => 'ssh_pubkeys/ssh_pubkey', :collection =>  @user.ssh_pubkeys %>
   </ul>
 </div>
