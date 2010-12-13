@@ -1,10 +1,14 @@
 class SshPubkeysController < ApplicationController
   before_filter :account_management_enabled?
   before_filter :assign_user
-  before_filter :find_pubkey, :only => [:edit, :update, :destroy]
+  before_filter :find_pubkey, :only => [:show, :edit, :update, :destroy]
+  before_filter :user_can_view?, :only => [:show]
   before_filter :new_pubkey, :only => [:new, :create]
 
   def new
+  end
+
+  def show
   end
 
   def create
@@ -67,7 +71,8 @@ class SshPubkeysController < ApplicationController
   def account_management_enabled?
     return configured?(:account_management) || raise_unknown_action_error
   end
-  def user_is_public?
+  def user_can_view?
+    @user.admin? || @user.ssh_pubkeys.include?(@ssh_pubkey) || raise_permission_denied_error
   end
   
   private
@@ -82,5 +87,8 @@ class SshPubkeysController < ApplicationController
 
   def raise_unknown_action_error
     raise ::ActionController::UnknownAction, 'Action is hidden', caller
+  end
+  def raise_permission_denied_error
+    raise ::ActionController::InvalidAuthenticityToken, 'Must be owner of data or admin', caller
   end
 end

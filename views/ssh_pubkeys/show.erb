@@ -1,0 +1,10 @@
+<% @page_title = _('Dump SSH Public Key') -%>
+
+<% slim_page -%>
+
+<div class="ssh_pubkey">
+  <div class="box">
+    <span class="strong container"><%= @ssh_pubkey.filename %></span>
+    <textarea class="span-16" rows="15" readonly="readonly"><%= @ssh_pubkey.pubkey %></textarea>
+  <%= top_link %>
+</div>
