@@ -1,0 +1,10 @@
+---
+- !ruby/object:RetroCM::Section
+  name: 'repositories'
+  groups:
+    - !ruby/object:RetroCM::Group
+      name: 'repo_git'
+      settings:
+        - !ruby/object:RetroCM::StringSetting
+          name: 'path'
+          default: 'gitolite-admin'

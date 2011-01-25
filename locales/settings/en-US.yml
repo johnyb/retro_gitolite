@@ -1,0 +1,12 @@
+en-US:
+  settings:
+
+    repositories:
+      label: 'Repositories'
+      groups:
+        repo_git:
+          label: 'Git Repository Management'
+          settings:
+            path:
+              label: 'Repository'
+              description: 'The repository containing the account information. (default: gitolite-admin)'
