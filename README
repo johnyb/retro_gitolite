@@ -1,2 +1,8 @@
 This is a plugin to support the gitolite git-hosting platform
 in the project-management tool retrospectiva.
+
+== Install
+
+  script/rxm download git://github.com/johnyb/retro_gitolite.git
+
+  script/rxm install retro_gitolite
