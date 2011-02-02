@@ -6,5 +6,5 @@
       name: 'repo_git'
       settings:
         - !ruby/object:RetroCM::StringSetting
-          name: 'path'
+          name: 'repo'
           default: 'gitolite-admin'

@@ -7,6 +7,6 @@ en-US:
         repo_git:
           label: 'Git Repository Management'
           settings:
-            path:
+            repo:
               label: 'Repository'
               description: 'The repository containing the account information. (default: gitolite-admin)'
