@@ -6,15 +6,27 @@ class SshPubkey < ActiveRecord::Base
   validates_presence_of :pubkey
 
   def after_save
-    type, blob, comment = self.pubkey.split
-    key = Gitolite::SSHKey.new type, blob, comment
-    key.owner = user.scm_name
-    key.location = "#{ id }"
     ga = RetroGitolite::GitoliteAdmin.instance.repo
-    ga.add_key(key)
+    ga.add_key(self.key)
     ga.save_and_apply
   end
+
+  def before_destroy
+    ga = RetroGitolite::GitoliteAdmin.instance.repo
+    ga.rm_key(self.key)
+    ga.save_and_apply
+  end
+
   def filename
     return "#{ user.scm_name }@#{ id }.pub"
+  end
+
+  protected
+  def key
+    type, blob, comment = self.pubkey.split
+    k = Gitolite::SSHKey.new type, blob, comment
+    k.owner = self.user.scm_name
+    k.location = "#{ id }"
+    k
   end
 end
