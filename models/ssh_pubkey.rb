@@ -9,12 +9,14 @@ class SshPubkey < ActiveRecord::Base
     ga = RetroGitolite::GitoliteAdmin.instance.repo
     ga.add_key(self.key)
     ga.save_and_apply
+    ga.gl_admin.git.push
   end
 
   def before_destroy
     ga = RetroGitolite::GitoliteAdmin.instance.repo
     ga.rm_key(self.key)
     ga.save_and_apply
+    ga.gl_admin.git.push
   end
 
   def filename
