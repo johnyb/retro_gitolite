@@ -3,5 +3,5 @@
     <%= link_to _('Edit'), edit_ssh_pubkey_path(ssh_pubkey.id) %>
     <%= link_to _('Delete'), ssh_pubkey_path(ssh_pubkey), options_for_destroy_link %>
   </span>
-  <span><%= ssh_pubkey.filename %></span>
+  <span><%= link_to ssh_pubkey.filename, ssh_pubkey_path(ssh_pubkey) %></span>
 </li>
